@@ -43,7 +43,7 @@ menu:
 #   Key is the name of menu item and value is the name of FontAwsome icon. Key is case-senstive.
 #   When an question mask icon presenting up means that the item has no mapping icon.
 menu_icons:
-  enable: false
+  enable: true
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
   about: user
@@ -61,8 +61,8 @@ menu_icons:
 # ---------------------------------------------------------------
 
 # Schemes
-scheme: Muse
-#scheme: Mist
+#scheme: Muse
+scheme: Mist
 #scheme: Pisces
 
 
@@ -142,8 +142,8 @@ social_icons:
 
 
 # Sidebar Avatar
-# in theme directory(source/images): /images/avatar.png
-# in site  directory(source/uploads): /uploads/avatar.png
+# in theme directory(source/images): /images/avatar.jpg
+# in site  directory(source/uploads): /uploads/avatar.jpg
 avatar: /images/avatar.png
 
 
@@ -196,7 +196,7 @@ sidebar:
 #   enabled: [true/false] - Replace with specific image
 #   image: url-of-image   - Images's url
 custom_logo:
-  enabled: true
+  enabled: True
   image: /images/avatar.png
 
 
@@ -214,7 +214,7 @@ scroll_to_more: true
 # Automatically Excerpt. Not recommand.
 # Please use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
-  enable: true
+  enable: True
   length: 150
 
 
@@ -342,7 +342,7 @@ baidu_push: false
 # API Documentation:
 # https://developers.google.com/google-apps/calendar/v3/reference/events/list
 calendar:
-  enable: false
+  enable: False
   calendar_id: <required>
   api_key: <required>
   orderBy: startTime
