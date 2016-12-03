@@ -1,0 +1,58 @@
+---
+title: APS地址数据整理
+date: 2016-11-25 11:21:20
+tags: [APS, 数据处理]
+---
+# 1.预处理
+- html转义
+- 对一些明显的错写词纠正
+- 对符号进行标准处理:把"(",")","^","†","/","*","@","‡","§","‖",";"统一转化为","，同时，
+- 带有语调字符的转义
+
+共有354, 534条不重复地址记录
+# 2.地址分割与匹配
+
+## 分割方式：按照国家分割
+- 国家：数据来源于ISO-2国家标准编码，同时，把诸如"CZECHOSLOVAKIA"，"USSR"，"YUGOSLAVIA"，"korea"先单独作为一个独立国家，同时，有一些国家有多个名字，收集这些名字的变种，统一标识。
+![](http://imglf2.nosdn.127.net/img/Q20zbTVFMnRqRVc2RURicDJnZXpPN0xjY2VVTjcvckE5aGdUeTlwUFZwaENlNEJDTFdFcnR3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg)
+- 美国各州，先作为“国家”进行匹配，若没有找到，再去找“USA”或者“United States”
+- 加拿大各州，同上
+- 匹配：按照,分割出CommaString，对每个CommaString逐个匹配，记录下每次匹配的位置，判断是否在“Universit”，“Universitat”,"labrotory"等机构词汇附近，如果在其附近并且二者之间没有“and”且距离没有超过3个空格，认定匹配失败，记录下匹配成功的国家名，
+如果遇到同一地址字符出现多个国家名的情况
+![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVc2RURicDJnZXpPNmRKSTd2Sm1XOTl1YUdxNmk5SEU3ejU4a1Myci9EVlp3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+则判断两个国家名之间是否存在" AND "这种情况，有的话默认保留前者
+- 对整个地址按照国家进行分割
+
+结果，有2，564个地址没有找到国家名，这些地址都没有国家名，比如
+DEPARTMENT OF PHYSICS, FUDAN UNIVERSITY, SHANGHAI, PEOPLE’S REPUBLIC OF
+SCOTTISH UNIVERSITIES PHYSICS ALLIANCE (SUPA)
+DIPARTIMENTO DI FISICA, UNIVERSITA DI MILANO
+RESEARCH CENTER FOR THE EARLY UNIVERSE (RESCEU), GRADUATE SCHOOL OF SCIENCE, UNIVERSITY OF TOKYO, 7-3-1, HONGO, BUNKYO-KU 113-0033, TOKYO
+DEPARTMENT OF PHYSICS, UNIVERSITY OF PRETORIA, PRETORIA, REPUBLIC OF
+INSTITUTE OF EXPERIMENTAL AND THEORETICAL PHYSICS, MOSCOW
+主要是只写城市名，或者州名写错“ILLINOI S”，或者没有城市名，甚至没有任何地址信息包含在内
+
+如果有国家-省-城市的三级列表，就可以按照处理美国各州的方式进行处理了
+这种处理通过了机构的检验，方法是，如果有机构列表里的机构出现在该地址中，统计国家正确的数量，，但是，只有不到43%的字符串中找到了机构列表中的机构，机构列表太少，或者实际地址中的机构名拼写错误亦或者有多名现象存在。
+## 寻找城市
+
+- 按照分割后的子字符串搜搜城市，如果一个字符串中出现多个城市，并且二者距离很近，默认取后一个。这个主要是我们的城市列表包括了大量的乡镇导致的。
+- 在城市的数据库中大量类似“New”,"Hill"的单词 ，我们直接忽略这些地理名，人工处理
+- 大致按照处理国家的方式进行处理。
+
+检验，有9,031个地址没有找到城市，同样的，机构检验结果与国家检验相同，有一部分是不包含城市名，只有学校地址。
+
+随机挑选了1000条结果进行比对，结果有29条错误，国家匹配正确，但城市匹配中会有多个城市名，因为默认去后者 
+
+
+# 尚未完成的任务：
+1. 把处理结果记录到每篇文献的json文件里
+2. 城市聚类，这个美国的问题很少，但其他国家会出现的潜在问题是，匹配在 国家 -城市层面，region信息缺失会导致异地聚类，已经爬到了各国的region信息，但有一些欧洲国家有两套region体制，省份、大区
+3. 可视化及各国分析，尚未完成，GIS
+
+
+
+
+
+
+
