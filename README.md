@@ -29,11 +29,18 @@
 
 - autofirst.sh 拉回博客文件
 
-- ```shell
+  ```shell
   #git remote add origin https://github.com/hashc/blog_hexo.git
   git fetch --all
   git reset --hard origin/master
   ```
 
 - autogetnext.sh 拉回主题
+
+  ```shell
+  #git remote add -f next https://github.com/hashc/hexo-theme-next.git
+  #git subtree add --prefix=themes/next next master --squash
+  git fetch next master
+  git subtree pull --prefix=themes/next next master --squash
+  ```
 
