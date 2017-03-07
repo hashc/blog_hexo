@@ -1,11 +1,12 @@
 ---
 title: 一个带label网络的embedding问题
 date: 2017-02-23 11:05:16
-tags:[多层网络，embedding]
+tags: [多层网络，embedding]
 
 ---
 
-[](https://hashc.github.io/2017/02/13/%E4%B8%80%E4%B8%AA%E5%9C%A8%E5%A4%9A%E5%B1%82%E7%BD%91%E4%B8%8A%E7%9A%84%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B/)
+https://hashc.github.io/2017/02/13/%E4%B8%80%E4%B8%AA%E5%9C%A8%E5%A4%9A%E5%B1%82%E7%BD%91%E4%B8%8A%E7%9A%84%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B/
+
 
 之前一篇提到多一个多层网络的传播模型，和Fung讨论一下，我们俩发现，对于上一篇提到的作者-引文网络，我们尝试通过不同的方法来对这个网络embedding
 
