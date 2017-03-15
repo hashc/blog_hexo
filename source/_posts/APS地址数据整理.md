@@ -14,13 +14,13 @@ tags: [APS, 数据处理]
 
 ## 分割方式：按照国家分割
 - 国家：数据来源于ISO-2国家标准编码，同时，把诸如"CZECHOSLOVAKIA"，"USSR"，"YUGOSLAVIA"，"korea"先单独作为一个独立国家，同时，有一些国家有多个名字，收集这些名字的变种，统一标识。
-![](http://imglf2.nosdn.127.net/img/Q20zbTVFMnRqRVc2RURicDJnZXpPN0xjY2VVTjcvckE5aGdUeTlwUFZwaENlNEJDTFdFcnR3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg)
+  ![](http://imglf2.nosdn.127.net/img/Q20zbTVFMnRqRVc2RURicDJnZXpPN0xjY2VVTjcvckE5aGdUeTlwUFZwaENlNEJDTFdFcnR3PT0.png?imageView&thumbnail=500x0&quality=96&stripmeta=0&type=jpg)
 - 美国各州，先作为“国家”进行匹配，若没有找到，再去找“USA”或者“United States”
 - 加拿大各州，同上
 - 匹配：按照,分割出CommaString，对每个CommaString逐个匹配，记录下每次匹配的位置，判断是否在“Universit”，“Universitat”,"labrotory"等机构词汇附近，如果在其附近并且二者之间没有“and”且距离没有超过3个空格，认定匹配失败，记录下匹配成功的国家名，
-如果遇到同一地址字符出现多个国家名的情况
-![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVc2RURicDJnZXpPNmRKSTd2Sm1XOTl1YUdxNmk5SEU3ejU4a1Myci9EVlp3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
-则判断两个国家名之间是否存在" AND "这种情况，有的话默认保留前者
+  如果遇到同一地址字符出现多个国家名的情况
+  ![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVc2RURicDJnZXpPNmRKSTd2Sm1XOTl1YUdxNmk5SEU3ejU4a1Myci9EVlp3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+  则判断两个国家名之间是否存在" AND "这种情况，有的话默认保留前者
 - 对整个地址按照国家进行分割
 
 结果，有2，564个地址没有找到国家名，这些地址都没有国家名，比如
@@ -44,14 +44,58 @@ INSTITUTE OF EXPERIMENTAL AND THEORETICAL PHYSICS, MOSCOW
 
 随机挑选了1000条结果进行比对，结果有29条错误，国家匹配正确，但城市匹配中会有多个城市名，因为默认去后者 
 
+# 城市聚类问题：
 
-# 尚未完成的任务：
-1. 把处理结果记录到每篇文献的json文件里
-2. 城市聚类，这个美国的问题很少，但其他国家会出现的潜在问题是，匹配在 国家 -城市层面，region信息缺失会导致异地聚类，已经爬到了各国的region信息，但有一些欧洲国家有两套region体制，省份、大区
-3. 可视化及各国分析，尚未完成，GIS
+method=’complete’ assigns：
+$$
+d(u,v)=max(dist(u_i,v_j))
+$$
+​							for all points i $\in$ cluster u and j $\in$ cluster v. 
+
+This is also known by the Farthest Point Algorithm or Voor Hees Algorithm.
+
+这样可以避免同一类里出现两个点距离过大的情况
 
 
 
+
+
+# 第二次处理
+
+根据思哥给的单地址数据得到的城市数据集（主要是gps数据和城市数据分得很详细），根据上一次的结果匹配得到相应的城市
+
+然后得到如下的结果
+
+![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVVVbTNBa0Znc3BSTFpsUGppSlA3bWxEV3lnQ0IxSGg2S3dsK1NWNUNsR1B3PT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+
+
+
+
+![](http://imglf2.nosdn.127.net/img/Q20zbTVFMnRqRVVVbTNBa0Znc3BSQ0FqcFpDaThzK3R5UGRZUERvMm1SMGFYSWE4Y011REdRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+
+
+
+
+93-13年得到的排名，基本相差不多
+
+把所有年份都集中到一起来看的话，Newark, NJ, USA这个城市的pagerank 与iof 上的差异比较大
+
+
+
+| all                  | 93-13                  |
+| :------------------- | ---------------------- |
+| Boston, MA, USA      | Boston, MA, USA        |
+| Newark, NJ, USA      | Paris, France          |
+| Stanford, CA, USA    | Tokyo, Japan           |
+| Chicago, IL, USA     | Stanford, CA, USA      |
+| Berkeley, CA, USA    | Chicago, IL, USA       |
+| Piscataway, NJ, USA  | Washington, DC, USA    |
+| Washington, DC, USA  | Pinceton, NJ, USA      |
+| Stony Brook, NY, USA | San Francisco, CA, USA |
+| Paris, France        | Stony Brook, NY, USA   |
+|                      |                        |
 
 
 
