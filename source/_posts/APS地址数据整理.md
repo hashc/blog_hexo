@@ -92,7 +92,7 @@ This is also known by the Farthest Point Algorithm or Voor Hees Algorithm.
 | Chicago, IL, USA     | Stanford, CA, USA      |
 | Berkeley, CA, USA    | Chicago, IL, USA       |
 | Piscataway, NJ, USA  | Washington, DC, USA    |
-| Washington, DC, USA  | Pinceton, NJ, USA      |
+| Washington, DC, USA  | Newark, NJ, USA        |
 | Stony Brook, NY, USA | San Francisco, CA, USA |
 | Paris, France        | Stony Brook, NY, USA   |
 |                      |                        |
