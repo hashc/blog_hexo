@@ -17,7 +17,7 @@
   sudo hexo server
   ```
 
-- pushall.sh 是自动实现把hexo所有的文件上传到远程的blog_hexo仓库
+- push_all.sh 是自动实现把hexo所有的文件上传到远程的blog_hexo仓库
 
   ```bash
   sudo git add .
@@ -27,7 +27,7 @@
 
   ```
 
-- autofirst.sh 拉回博客文件
+- pull_all.sh 拉回博客文件
 
   ```shell
   #git remote add origin https://github.com/hashc/blog_hexo.git
