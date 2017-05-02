@@ -33,6 +33,8 @@ tags: [pagerank,k_core]
 
   也就是，当没有随机游走的时候，pr-core得到的结果应该与k_core一样，所以可以看看在有向网络和加权网络上，pr-core的效果
 
+  ![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVVBOW9FNkh6dWVoSllQSlRGWHN1akxWNDJGZXh2Unl1eG9yUVc4TWk0cGxRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
 - 对一个非全连通的网络，它的pagerank值的初始化默认是给每个节点赋同样的值，这就导致出现如下情况：（以随机生成的小世界1000个结点的网络为例，删去了一些结点后，图不连通了）
 
   可以找到联通的子图，对子图分别算pagerank值，然后按照子图的边值占总边数的比来乘以对应点的pr值，可以得到下图：
@@ -51,7 +53,15 @@ tags: [pagerank,k_core]
 
   ![](http://imglf1.nosdn.127.net/img/Q20zbTVFMnRqRVdnejFseXNrd1BMdVZWcHN6blJBenBXSDhwMGoxQVpBQUtpRlA4TFlJNVNRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
 
-也就是说，不加随机游走，比加随机游走项效果要好。
+也就是说，在无权无向网络上，不加随机游走，比加随机游走项效果要好。
+
+
+
+下图是$alpha=0.85$的pr_core与k_core的对比
+
+![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVVBOW9FNkh6dWVoTXJvdHJWVStGenZrSjk2TkoxOUQrVytMQVhiRGlPdS9RPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+
 
 
 
@@ -66,8 +76,6 @@ tags: [pagerank,k_core]
 用词共现矩阵建网络，边权重是共同出现频率，利用边权重累加计算WK-core,在关键词提取上效果好于Pagerank 和k-core
 
 ![](http://imglf2.nosdn.127.net/img/Q20zbTVFMnRqRVd6K2hHSXN4KzNpdCtBdTJnSlNrOE9LZFk2dER0NVM0ZWlPZ1AyNEJQaklRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
-
-
 
 
 
@@ -98,3 +106,27 @@ Christos Giatsidis,2011,D-cores: measuring collaboration of directed graphsbased
 ![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVd6K2hHSXN4KzNpc0J5Z0VDUTdYdkRlYkltVFNrWjRJWkZHZWEzU28wOXdnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
 
 ![](http://imglf1.nosdn.127.net/img/Q20zbTVFMnRqRVd6K2hHSXN4KzNpdUgyS0xUeFEzM3BSQ1BCdUIrUWd1STNVU3RBSjJzZWJnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+
+
+### 3.有向网上的pr_core实证
+
+一般而言，有向网络上的k_core可以用以下三种方法来计算：
+
+- 转为无向网络
+
+- 只考虑入度
+
+- 只考虑出度
+
+  ​
+
+![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVdXckIxSHIwbU1KL3JxVWRjL0ZqMkdGQzNVWmJ6cE10VFFqYzRsL281cllnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+上图是$\alpha=1$时，pr_core与k_core(转换成无向网络)的关系，其他情况类似，下图是这三种与Pagerank_core的对比：
+
+![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVdXckIxSHIwbU1KOEJ3UVBYcHkwSkhMVWI3M3NTbXpXYjJ6R2ltdnZMeEVRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+绿色线表示转为无向网，红色表示考虑入度，蓝色表示考虑出度
+
+数据源：WIki_vote有向网络
