@@ -130,3 +130,14 @@ Christos Giatsidis,2011,D-cores: measuring collaboration of directed graphsbased
 绿色线表示转为无向网，红色表示考虑入度，蓝色表示考虑出度
 
 数据源：WIki_vote有向网络
+
+
+
+最后，对比了预测前100名中不同方法的准确度：
+
+- $k_{core}$预测对了32,
+
+
+- $k^{in}_{core}$预测对了39个，
+- $k^{out}_{core}$预测对了58个，
+- $\alpha=1$的$pr_{core}$预测对了13个
