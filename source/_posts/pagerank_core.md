@@ -121,13 +121,21 @@ Christos Giatsidis,2011,D-cores: measuring collaboration of directed graphsbased
 
   ​
 
-![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVdXckIxSHIwbU1KL3JxVWRjL0ZqMkdGQzNVWmJ6cE10VFFqYzRsL281cllnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+![](http://imglf.nosdn.127.net/img/Q20zbTVFMnRqRVZFZkwzemp0ZHpuTUtqTi9wWFo0OFNBWWNwWmU2MGd6NC9SSXJyMUZBN1pnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
 
-上图是$\alpha=1$时，pr_core与k_core(转换成无向网络)的关系，其他情况类似，下图是这三种与Pagerank_core的对比：
+上图是$\alpha=1$时，pr_core与$k^{in}_{core}$的比较，其它情况也相似
 
-![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVdXckIxSHIwbU1KOEJ3UVBYcHkwSkhMVWI3M3NTbXpXYjJ6R2ltdnZMeEVRPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+$k_{in}$二者关于传播能力的坎德尔系数，pr_core是0.93,$k^{in}_{core}$是0.96.
 
-绿色线表示转为无向网，红色表示考虑入度，蓝色表示考虑出度
+其他情况类似，下图是三者与Pagerank_core的对比：
+
+![](http://imglf0.nosdn.127.net/img/Q20zbTVFMnRqRVZFZkwzemp0ZHpuR1dwRU5IblE3NGVzb2lISUVvUysxV1V6MXZMNzl0WXBnPT0.png?imageView&thumbnail=1680x0&quality=96&stripmeta=0&type=jpg)
+
+
+
+
+
+
 
 数据源：WIki_vote有向网络
 
@@ -135,9 +143,24 @@ Christos Giatsidis,2011,D-cores: measuring collaboration of directed graphsbased
 
 最后，对比了预测前100名中不同方法的准确度：
 
-- $k_{core}$预测对了32,
+- $k_{core}$预测对了19个，
 
 
-- $k^{in}_{core}$预测对了39个，
-- $k^{out}_{core}$预测对了58个，
-- $\alpha=1$的$pr_{core}$预测对了13个
+- $k^{in}_{core}$预测对了79个，
+- $\alpha=1$的$pr_{core}$预测对了16个
+
+200名中：
+
+- $k_{core}$预测对了71个，
+
+
+- $k^{in}_{core}$预测对了163个，
+- $\alpha=1$的$pr_{core}$预测对了53个
+
+200名中：
+
+- $k_{core}$预测对了324个，
+
+
+- $k^{in}_{core}$预测对了422个，
+- $\alpha=1$的$pr_{core}$预测对了324个
