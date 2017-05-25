@@ -164,3 +164,5 @@ $k_{in}$二者关于传播能力的坎德尔系数，pr_core是0.93,$k^{in}_{cor
 
 - $k^{in}_{core}$预测对了422个，
 - $\alpha=1$的$pr_{core}$预测对了324个
+
+![](http://imglf2.nosdn.127.net/img/Q20zbTVFMnRqRVVFYURheDhod3FIVHo0d3k5dGh3eWl2YURpQStDb2R2d3dxRExPOTZQNHhRPT0.png?imageView&thumbnail=2000y2000&type=jpg&quality=96&stripmeta=0&type=jpg)
