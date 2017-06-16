@@ -29,7 +29,7 @@ tags: [plan]
 
   [7]Dropout Training as Adaptive Regularization
 
-  [8][Visualizing and Understanding Recurrent Networks](https://arxiv.org/pdf/1506.02078.pdf)
+  [8]:[Visualizing and Understanding Recurrent Networks](https://arxiv.org/pdf/1506.02078.pdf)
 
 # 2. 可视化相关：
 
@@ -43,4 +43,8 @@ tags: [plan]
 
 - 识别虚假引用（定义文章的相似性的方法，基于内容和引用，是不是两人合作越多，非必要引用也出现得越多？）和引用的创新性的识别
 
+- 学术撤稿的影响，对个人发表文章，机构文章，领域内影响
+
   后面两个可能在近期做一下，文献调研暂时没有做，不过应该做过的人不多
+
+# 4. Github上的合作演化，决策与创新
